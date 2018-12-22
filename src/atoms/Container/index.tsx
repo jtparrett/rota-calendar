@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// Styles
 export default styled.div`
   width: 980px;
   max-width: 100%;

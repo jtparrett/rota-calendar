@@ -10,12 +10,12 @@ import {hoursToShow} from '../../config'
 import {withCalendar} from '../../context/calendar'
 
 // Methods
-const today = dayjs().startOf('day')
-
-const useHours = (hourOffset: number) => {
+const useHours = (date: any, hourOffset: number) => {
   const getHours = () => {
     return [...Array(hoursToShow)].map((_, index) => {
-      return today.add(index + hourOffset, 'hour')
+      return date
+        .startOf('day')
+        .add(index + hourOffset, 'hour')
     })
   }
 
@@ -29,8 +29,8 @@ const useHours = (hourOffset: number) => {
 }
 
 // Render
-const HoursList = ({ hourOffset, renderItem }) => {
-  const hours: any[] = useHours(hourOffset)
+const HoursList = ({ date, hourOffset, renderItem }) => {
+  const hours: any[] = useHours(date, hourOffset)
 
   return (
     <div>
@@ -42,6 +42,7 @@ const HoursList = ({ hourOffset, renderItem }) => {
 }
 
 HoursList.propTypes = {
+  date: PropTypes.any.isRequired,
   hourOffset: PropTypes.number.isRequired,
   renderItem: PropTypes.func.isRequired
 }

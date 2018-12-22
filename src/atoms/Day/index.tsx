@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import dayjs from 'dayjs'
 
 // Atoms
 import Typpography from '../Typography'
 import HoursList from '../HoursList'
 import Slot from '../Slot'
-import Button from '../Button'
+import Modal from '../Modal'
 
 // Config
 import {headerHeight} from '../../config'
@@ -26,19 +27,36 @@ const Header = styled.div`
 `
 
 // Render
-const Day = ({ date }) => (
-  <Main>
-    <Header>
-      <Typpography fontSize="14px">{date.format('DD/MM/YYYY')}</Typpography>
-    </Header>
+const Day = ({ date }) => {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedDate, setSelectedDate] = useState(date)
 
-    <HoursList renderItem={(date) => (
-      <Slot key={date.format('HH:mm')}>
-        <Button>Create Booking</Button>
-      </Slot>
-    )} />
-  </Main>
-)
+  return (
+    <Main>
+      <Header>
+        <Typpography fontSize="14px">{date.format('DD/MM/YYYY')}</Typpography>
+      </Header>
+
+      <HoursList 
+        date={date}
+        renderItem={(date) => (
+          <Slot key={date.format('HH:mm')}>
+            <button onClick={() => {
+              setSelectedDate(date)
+              setModalOpen(true)
+            }}>Book</button>
+          </Slot>
+        )} />
+
+      {modalOpen &&
+        <Modal>
+          <button onClick={() => setModalOpen(false)}>Close</button>
+          <Typpography>{selectedDate.format('DD/MM/YYYY HH:mm')}</Typpography>
+        </Modal>
+      }
+    </Main>
+  )
+}
 
 Day.propTypes = {
   date: PropTypes.any

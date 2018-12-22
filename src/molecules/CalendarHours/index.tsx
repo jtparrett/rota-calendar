@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import MaterialIcon from 'material-icons-react'
+import dayjs from 'dayjs'
 
 // Context
 import {withCalendar} from '../../context/calendar'
@@ -21,6 +22,8 @@ const Button = styled(IconButton)`
 `
 
 // Render
+const today = dayjs()
+
 const CalendarHours = ({ hourOffset, incrementHourOffset, decrementHourOffset }) => (
   <div>
     <Button 
@@ -29,6 +32,7 @@ const CalendarHours = ({ hourOffset, incrementHourOffset, decrementHourOffset })
       size={20} />
 
     <HoursList 
+      date={today}
       renderItem={(date) => (
         <Slot key={date.format('HH:mm')}>
           <Typpography>{date.format('HH:mm')}</Typpography>

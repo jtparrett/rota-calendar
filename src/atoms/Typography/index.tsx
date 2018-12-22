@@ -17,5 +17,7 @@ Typography.propTypes = {
 
 // Styles
 export default styled(Typography)`
+  line-height: 1;
   margin: ${props => props.margin || '0'};
+  ${props => props.fontSize && `font-size: ${props.fontSize}`}
 `

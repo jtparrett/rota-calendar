@@ -10,3 +10,7 @@ export const daysToShow = 7
 
 // Height of calendar header
 export const headerHeight = '40px'
+
+// Height of calendar slot
+// Fixed value due to not using table for calendar layout :(
+export const slotHeight = '40px'

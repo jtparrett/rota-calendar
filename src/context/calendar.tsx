@@ -53,10 +53,3 @@ export const withCalendar = (Component) => {
 withCalendar.propTypes = {
   Component: PropTypes.element.isRequired
 }
-
-// Consumer Component
-export const CalendarConsumer = ({children}) => (
-  <CalendarContext.Consumer>
-    {children}
-  </CalendarContext.Consumer>
-)

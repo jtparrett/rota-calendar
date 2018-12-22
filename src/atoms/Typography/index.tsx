@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Typography = ({ Element, children, ...props }) => (
   <Element {...props}>{children}</Element>
@@ -7,6 +8,10 @@ const Typography = ({ Element, children, ...props }) => (
 
 Typography.defaultProps = {
   Element: 'p'
+}
+
+Typography.propTypes = {
+  Element: PropTypes.string
 }
 
 export default styled(Typography)`

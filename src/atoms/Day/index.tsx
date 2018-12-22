@@ -14,7 +14,6 @@ import {headerHeight} from '../../config'
 // Styles
 const Main = styled.div`
   flex: 1;
-  border-bottom: ${headerHeight} solid #000;
 `
 
 const Header = styled.div`

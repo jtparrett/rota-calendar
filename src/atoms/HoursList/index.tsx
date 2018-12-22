@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -13,10 +13,19 @@ import {withCalendar} from '../../context/calendar'
 const today = dayjs().startOf('day')
 
 const useHours = (hourOffset: number) => {
-  // Create array of 'hoursToShow' length
-  return [...Array(hoursToShow)].map((_, index) => {
-    return today.add(index + hourOffset, 'hour')
-  })
+  const getHours = () => {
+    return [...Array(hoursToShow)].map((_, index) => {
+      return today.add(index + hourOffset, 'hour')
+    })
+  }
+
+  const [hours, setHours] = useState(getHours())
+
+  useEffect(() => {
+    setHours(getHours())
+  }, [hourOffset])
+
+  return hours
 }
 
 // Render

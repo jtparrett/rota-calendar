@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import PropTypes from 'prop-types'
 
@@ -12,13 +12,23 @@ import {daysToShow} from '../../config'
 import {withCalendar} from '../../context/calendar'
 
 // Methods
+const today = dayjs().startOf('day')
+
 const useDays = (dayOffset: number) => {
-  // Create array of 'daysToShow' length
-  return [...Array(daysToShow)].map((_, index) => {
-    return dayjs()
-      .startOf('day')
-      .add(index + dayOffset, 'day')
-  })
+  
+  const getDays = () => {
+    return [...Array(daysToShow)].map((_, index) => {
+      return today.add(index + dayOffset, 'day')
+    })    
+  }
+
+  const [days, setDays] = useState(getDays())
+
+  useEffect(() => {
+    setDays(getDays())
+  }, [dayOffset])
+
+  return days
 }
 
 // Render

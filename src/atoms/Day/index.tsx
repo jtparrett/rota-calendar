@@ -20,23 +20,22 @@ const Header = styled.div`
 `
 
 // Render
-const Day = ({ date, hourOffset }) => (
+const Day = ({ date }) => (
   <Main>
     <Header>
       <Typpography>{date.format('DD/MM/YYYY')}</Typpography>
     </Header>
 
-   <HoursList 
-    hourOffset={hourOffset}
-    renderItem={(date) => (
-      <Slot key={date.format('HH:mm')} title="Book Now" />
+    <HoursList renderItem={(date) => (
+      <Slot key={date.format('HH:mm')}>
+        <button>Book Now</button>
+      </Slot>
     )} />
   </Main>
 )
 
 Day.propTypes = {
-  date: PropTypes.any,
-  hourOffset: PropTypes.number
+  date: PropTypes.any
 }
 
 export default Day

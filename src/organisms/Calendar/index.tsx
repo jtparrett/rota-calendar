@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 // Config
 import {hoursToShow} from '../../config'
+
+// Context
+import {CalendarProvider, CalendarConsumer} from '../../context/calendar'
 
 // Molecules
 import CalendarDays from '../../molecules/CalendarDays'
@@ -13,36 +16,22 @@ const Main = styled.div`
   display: flex;
 `
 
-// Methods
-const incrementHour = (hourOffset, setHourOffset) => () => {
-  setHourOffset(Math.min(hourOffset + 1, 24 - hoursToShow))
-}
-
-const decrementHour = (hourOffset, setHourOffset) => () => {
-  setHourOffset(Math.max(hourOffset - 1, 0)) 
-}
-
 // Render
-export default () => {
-  const [dayOffset, setDayOffset] = useState(0)
-  const [hourOffset, setHourOffset] = useState(0)
+export default () => (
+  <CalendarProvider>
+    <CalendarConsumer>
+      {({ dayOffset, setDayOffset }) => (
+        <React.Fragment>
+          <button onClick={() => setDayOffset(dayOffset - 1)}>&lt;</button>
+          <button onClick={() => setDayOffset(0)}>Today</button>
+          <button onClick={() => setDayOffset(dayOffset + 1)}>&gt;</button>
+        </React.Fragment>
+      )}
+    </CalendarConsumer>
 
-  return (
-    <React.Fragment>
-      <button onClick={() => setDayOffset(dayOffset - 1)}>Prev Day</button>
-      <button onClick={() => setDayOffset(dayOffset + 1)}>Next Day</button>
-
-      <Main>
-        <CalendarHours 
-          hourOffset={hourOffset} />
-          
-        <CalendarDays 
-          hourOffset={hourOffset} 
-          dayOffset={dayOffset} />
-      </Main>
-
-      <button onClick={decrementHour(hourOffset, setHourOffset)}>Prev Hour</button>
-      <button onClick={incrementHour(hourOffset, setHourOffset)}>Next Hour</button>
-    </React.Fragment>
-  )
-}
+    <Main>
+      <CalendarHours />
+      <CalendarDays />
+    </Main>
+  </CalendarProvider>
+)

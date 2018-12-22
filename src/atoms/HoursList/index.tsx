@@ -6,9 +6,12 @@ import PropTypes from 'prop-types'
 // Config
 import {hoursToShow} from '../../config'
 
-const today = dayjs().startOf('day')
+// Context
+import {withCalendar} from '../../context/calendar'
 
 // Methods
+const today = dayjs().startOf('day')
+
 const useHours = (hourOffset: number) => {
   // Create array of 'hoursToShow' length
   return [...Array(hoursToShow)].map((_, index) => {
@@ -30,8 +33,8 @@ const HoursList = ({ hourOffset, renderItem }) => {
 }
 
 HoursList.propTypes = {
-  hourOffset: PropTypes.number,
-  renderItem: PropTypes.func
+  hourOffset: PropTypes.number.isRequired,
+  renderItem: PropTypes.func.isRequired
 }
 
-export default HoursList
+export default withCalendar(HoursList)

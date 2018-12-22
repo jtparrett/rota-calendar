@@ -8,6 +8,9 @@ import Day from '../../atoms/Day'
 // Config
 import {daysToShow} from '../../config'
 
+// Context
+import {withCalendar} from '../../context/calendar'
+
 // Methods
 const useDays = (dayOffset: number) => {
   // Create array of 'daysToShow' length
@@ -19,7 +22,7 @@ const useDays = (dayOffset: number) => {
 }
 
 // Render
-const CalendarDays = ({ hourOffset, dayOffset }) => {
+const CalendarDays = ({ dayOffset }) => {
   const days: any[] = useDays(dayOffset)
 
   return (
@@ -27,7 +30,6 @@ const CalendarDays = ({ hourOffset, dayOffset }) => {
       {days.map(date => (
         <Day 
           key={date.format('DD/MM/YYYY')} 
-          hourOffset={hourOffset}
           date={date} />
       ))}
     </React.Fragment>
@@ -35,8 +37,7 @@ const CalendarDays = ({ hourOffset, dayOffset }) => {
 }
 
 CalendarDays.propTypes = {
-  hourOffset: PropTypes.number,
-  dayOffset: PropTypes.number
+  dayOffset: PropTypes.number.isRequired
 }
 
-export default CalendarDays
+export default withCalendar(CalendarDays)

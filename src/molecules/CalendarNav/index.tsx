@@ -10,6 +10,7 @@ import {withCalendar} from '../../context/calendar'
 
 // Atoms
 import IconButton from '../../atoms/IconButton'
+import Button from '../../atoms/Button'
 
 // Styles
 const Main = styled.div`
@@ -18,6 +19,8 @@ const Main = styled.div`
 
 const Actions = styled.div`
   display: flex;
+  overflow: hidden;
+  border-radius: 3px;
 `
 
 // Render
@@ -29,7 +32,7 @@ const Nav = ({ dayOffset, setDayOffset }) => (
         icon="keyboard_arrow_left" 
         size={15} />
 
-      <button onClick={() => setDayOffset(0)}>Today</button>
+      <Button onClick={() => setDayOffset(0)} title="Today" />
 
       <IconButton 
         onClick={() => setDayOffset(dayOffset + 1)} 

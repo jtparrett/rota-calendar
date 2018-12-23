@@ -19,10 +19,10 @@ const useHours = (date: any, hourOffset: number) => {
     })
   }
 
-  const [hours, setHours] = useState(getHours())
+  const [hours, setHours] = useState(getHours)
 
   useEffect(() => {
-    setHours(getHours())
+    setHours(getHours)
   }, [hourOffset])
 
   return hours

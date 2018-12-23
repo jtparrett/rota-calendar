@@ -12,12 +12,16 @@ Typography.defaultProps = {
 }
 
 Typography.propTypes = {
-  Element: PropTypes.string
+  Element: PropTypes.string,
+  margin: PropTypes.string,
+  fontSize: PropTypes.string,
+  color: PropTypes.string
 }
 
 // Styles
 export default styled(Typography)`
   line-height: 1;
   margin: ${props => props.margin || '0'};
-  ${props => props.fontSize && `font-size: ${props.fontSize}`}
+  ${props => props.fontSize && `font-size: ${props.fontSize};`}
+  ${props => props.color && `color: ${props.color};`}
 `

@@ -15,6 +15,7 @@ import {headerHeight} from '../../config'
 // Styles
 const Main = styled.div`
   flex: 1;
+  border-bottom: ${headerHeight} solid #000;
 `
 
 const Header = styled.div`
@@ -41,10 +42,13 @@ const Day = ({ date }) => {
         date={date}
         renderItem={(date) => (
           <Slot key={date.format('HH:mm')}>
-            <button onClick={() => {
-              setSelectedDate(date)
-              setModalOpen(true)
-            }}>Book</button>
+            <button
+              onClick={() => {
+                setSelectedDate(date)
+                setModalOpen(true)
+              }}>
+              Book Now
+            </button>
           </Slot>
         )} />
 

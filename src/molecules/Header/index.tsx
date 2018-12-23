@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 // Atoms
 import Typography from '../../atoms/Typography'
-import Nav from '../../atoms/Nav'
+
+// Molecules
+import CalendarNav from '../../molecules/CalendarNav'
 
 // Styles
 const Main = styled.div`
@@ -16,6 +18,6 @@ const Main = styled.div`
 export default () => (
   <Main>
     <Typography Element="h1">Rota Calendar</Typography>
-    <Nav />
+    <CalendarNav />
   </Main>
 )

@@ -22,10 +22,10 @@ const useDays = (dayOffset: number) => {
     })    
   }
 
-  const [days, setDays] = useState(getDays())
+  const [days, setDays] = useState(getDays)
 
   useEffect(() => {
-    setDays(getDays())
+    setDays(getDays)
   }, [dayOffset])
 
   return days

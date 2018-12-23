@@ -12,7 +12,8 @@ const Main = styled.div`
   flex-wrap: wrap;
   padding: 10px;
   border-bottom: 1px solid #ddd;
-  height: ${slotHeight}
+  height: ${slotHeight};
+  box-sizing: border-box;
 `
 
 // Render

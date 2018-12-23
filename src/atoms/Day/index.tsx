@@ -28,6 +28,7 @@ const Header = styled.div`
   background-color: #000;
   color: #fff;
   padding: 0 5px;
+  box-sizing: border-box;
 `
 
 // Render

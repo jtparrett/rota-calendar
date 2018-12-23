@@ -1,15 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 
 // Atoms
 import AddButton from '../AddButton'
-import Button from '../Button'
 import Typpography from '../Typography'
 import HoursList from '../HoursList'
 import Slot from '../Slot'
-import Modal from '../Modal'
 
 // Config
 import {headerHeight} from '../../config'
@@ -31,40 +29,27 @@ const Header = styled.div`
 `
 
 // Render
-const Day = ({ date }) => {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [selectedDate, setSelectedDate] = useState(date)
+const Day = ({ date, addBooking }) => (
+  <Main>
+    <Header>
+      <Typpography fontSize="14px">{date.format('DD/MM/YYYY')}</Typpography>
+    </Header>
 
-  return (
-    <Main>
-      <Header>
-        <Typpography fontSize="14px">{date.format('DD/MM/YYYY')}</Typpography>
-      </Header>
-
-      <HoursList 
-        date={date}
-        renderItem={(date) => (
-          <Slot key={date.format('HH:mm')}>
-            <AddButton
-              onClick={() => {
-                setSelectedDate(date)
-                setModalOpen(true)
-              }} />
-          </Slot>
-        )} />
-
-      {modalOpen &&
-        <Modal>
-          <Typpography margin="0 0 10px">{selectedDate.format('MMMM D : HH:mm')}</Typpography>
-          <Button title="Close" onClick={() => setModalOpen(false)} />
-        </Modal>
-      }
-    </Main>
-  )
-}
+    <HoursList 
+      date={date}
+      renderItem={(slotDate) => (
+        <Slot key={slotDate.format('HH:mm')}>
+          <AddButton onClick={() => {
+            addBooking(slotDate)
+          }} />
+        </Slot>
+      )} />
+  </Main>
+)
 
 Day.propTypes = {
-  date: PropTypes.any
+  date: PropTypes.any,
+  addBooking: PropTypes.func.isRequired
 }
 
 export default Day

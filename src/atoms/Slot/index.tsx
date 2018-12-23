@@ -6,8 +6,11 @@ import {slotHeight} from '../../config'
 
 // Styles
 const Main = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 10px;
-  text-align: center;
   border-bottom: 1px solid #ddd;
   height: ${slotHeight}
 `

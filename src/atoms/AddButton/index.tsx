@@ -4,16 +4,12 @@ import MaterialIcon from 'material-icons-react'
 
 // Styles
 const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: none;
   background: transparent;
-  width: 100%;
-  height: 100%;
   outline: none;
   color: #aaa;
   cursor: pointer;
+  padding: 10px;
 
   &:hover {
     color: #000;

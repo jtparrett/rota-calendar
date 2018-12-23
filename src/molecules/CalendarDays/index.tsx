@@ -1,19 +1,29 @@
 import {connect} from 'react-redux'
 import {compose} from 'recompose'
 
+// Actions
+import {createBooking as createBookingAction} from '../../actions/bookings'
+
 // Context
 import {withCalendar} from '../../context/calendar'
 
 // View
 import View from './view'
 
-// Redux Queries
-const mapStateToProps = (store, props) => ({
+// Map Redux dispatch to props
+const createBooking = (dispatch) => (date) => {
+  const bookingId = date.format()
+  dispatch(createBookingAction(bookingId))
+}
 
+const mapDispatchToProps = (dispatch) => ({
+  createBooking: createBooking(dispatch)
 })
 
-// Compose
-export default compose(
+// Container
+const CalendarDays = compose(
   withCalendar,
-  connect(mapStateToProps)
+  connect(null, mapDispatchToProps)
 )(View)
+
+export default CalendarDays

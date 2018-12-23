@@ -15,11 +15,10 @@ import {daysToShow} from '../../config'
 const today = dayjs().startOf('day')
 
 const useDays = (dayOffset: number) => {
-  
   const getDays = () => {
     return [...Array(daysToShow)].map((_, index) => {
       return today.add(index + dayOffset, 'day')
-    })    
+    })
   }
 
   const [days, setDays] = useState(getDays)
@@ -32,7 +31,7 @@ const useDays = (dayOffset: number) => {
 }
 
 // Render
-const CalendarDays = ({ dayOffset }) => {
+const CalendarDays = ({ dayOffset, createBooking }) => {
   const days: any[] = useDays(dayOffset)
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(today)
@@ -43,8 +42,8 @@ const CalendarDays = ({ dayOffset }) => {
         <Day 
           key={date.format('DD/MM/YYYY')} 
           date={date}
-          addBooking={(date) => {
-            setSelectedDate(date)
+          addBooking={(slotDate) => {
+            setSelectedDate(slotDate)
             setModalOpen(true)
           }} />
       ))}
@@ -53,7 +52,12 @@ const CalendarDays = ({ dayOffset }) => {
         <Modal>
           <Button title="Close" onClick={() => setModalOpen(false)} />
           <Typography margin="10px 0">{selectedDate.format('MMMM D : HH:mm')}</Typography>
-          <Button title="Book this slot" onClick={() => setModalOpen(false)} />
+          <Button 
+            title="Book this slot" 
+            onClick={() => {
+              createBooking(selectedDate)
+              setModalOpen(false)
+            }} />
         </Modal>
       }
     </React.Fragment>
@@ -61,7 +65,8 @@ const CalendarDays = ({ dayOffset }) => {
 }
 
 CalendarDays.propTypes = {
-  dayOffset: PropTypes.number.isRequired
+  dayOffset: PropTypes.number.isRequired,
+  createBooking: PropTypes.func.isRequired
 }
 
 export default CalendarDays

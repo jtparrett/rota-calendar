@@ -2,6 +2,7 @@
   "name": "rota-calendar",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jtparrett.github.io/rota-calendar",
   "dependencies": {
     "dayjs": "^1.7.8",
     "material-icons-react": "^1.0.4",

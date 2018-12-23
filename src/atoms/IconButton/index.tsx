@@ -13,6 +13,7 @@ const Button = styled.button`
   justify-content: center;
   padding: 5px;
   background-color: #000;
+  cursor: pointer;
 `
 
 // Render

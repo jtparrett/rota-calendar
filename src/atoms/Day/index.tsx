@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 
 // Atoms
+import AddButton from '../AddButton'
+import Button from '../Button'
 import Typpography from '../Typography'
 import HoursList from '../HoursList'
 import Slot from '../Slot'
@@ -25,6 +27,7 @@ const Header = styled.div`
   justify-content: center;
   background-color: #000;
   color: #fff;
+  padding: 0 5px;
 `
 
 // Render
@@ -42,20 +45,18 @@ const Day = ({ date }) => {
         date={date}
         renderItem={(date) => (
           <Slot key={date.format('HH:mm')}>
-            <button
+            <AddButton
               onClick={() => {
                 setSelectedDate(date)
                 setModalOpen(true)
-              }}>
-              Book Now
-            </button>
+              }} />
           </Slot>
         )} />
 
       {modalOpen &&
         <Modal>
-          <button onClick={() => setModalOpen(false)}>Close</button>
-          <Typpography>{selectedDate.format('DD/MM/YYYY HH:mm')}</Typpography>
+          <Typpography margin="0 0 10px">{selectedDate.format('MMMM D : HH:mm')}</Typpography>
+          <Button title="Close" onClick={() => setModalOpen(false)} />
         </Modal>
       }
     </Main>

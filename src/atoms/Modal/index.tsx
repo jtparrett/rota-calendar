@@ -21,6 +21,7 @@ const Content = styled.div`
   margin: 50px auto;
   background-color: #fff;
   padding: 20px;
+  border-radius: 3px;
 `
 
 // Render

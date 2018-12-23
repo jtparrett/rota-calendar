@@ -9,7 +9,7 @@ import {hoursToShow} from '../../config'
 // Context
 import {withCalendar} from '../../context/calendar'
 
-// Methods
+// Hooks
 const useHours = (date: any, hourOffset: number) => {
   const getHours = () => {
     return [...Array(hoursToShow)].map((_, index) => {

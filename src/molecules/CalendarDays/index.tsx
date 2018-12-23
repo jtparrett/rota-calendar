@@ -11,7 +11,7 @@ import {daysToShow} from '../../config'
 // Context
 import {withCalendar} from '../../context/calendar'
 
-// Methods
+// Hooks
 const today = dayjs().startOf('day')
 
 const useDays = (dayOffset: number) => {

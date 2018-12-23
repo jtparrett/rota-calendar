@@ -12,6 +12,8 @@ const Main = styled.button`
   background-color: #000;
   color: #fff;
   padding: 5px 10px;
+  cursor: pointer;
+  display: block;
 `
 
 // Render

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/rota-calendar/precache-manifest.176ceb7d3ba6d856d642c317ccf60023.js"
+  "/rota-calendar/precache-manifest.3a61bb477addc7db90f7e20a1fd9dc09.js"
 );
 
 workbox.clientsClaim();

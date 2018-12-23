@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 // Atoms
 import AddButton from '../AddButton'
-import Typpography from '../Typography'
+import Typography from '../Typography'
 import HoursList from '../HoursList'
 import Slot from '../Slot'
 
@@ -32,7 +32,7 @@ const Header = styled.div`
 const Day = ({ date, addBooking }) => (
   <Main>
     <Header>
-      <Typpography fontSize="14px">{date.format('DD/MM/YYYY')}</Typpography>
+      <Typography fontSize="14px">{date.format('DD/MM/YYYY')}</Typography>
     </Header>
 
     <HoursList 

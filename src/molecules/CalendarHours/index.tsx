@@ -8,7 +8,7 @@ import dayjs from 'dayjs'
 import {withCalendar} from '../../context/calendar'
 
 // Atoms
-import Typpography from '../../atoms/Typography'
+import Typography from '../../atoms/Typography'
 import HoursList from '../../atoms/HoursList'
 import Slot from '../../atoms/Slot'
 import IconButton from '../../atoms/IconButton'
@@ -35,7 +35,7 @@ const CalendarHours = ({ hourOffset, incrementHourOffset, decrementHourOffset })
       date={today}
       renderItem={(date) => (
         <Slot key={date.format('HH:mm')}>
-          <Typpography>{date.format('HH:mm')}</Typpography>
+          <Typography>{date.format('HH:mm')}</Typography>
         </Slot>
       )} />
 

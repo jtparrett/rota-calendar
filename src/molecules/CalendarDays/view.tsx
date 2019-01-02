@@ -37,7 +37,7 @@ const CalendarDays = ({ dayOffset, createBooking }) => {
   const [selectedDate, setSelectedDate] = useState(today)
 
   return (
-    <React.Fragment>
+    <>
       {days.map(date => (
         <Day 
           key={date.format('DD/MM/YYYY')} 
@@ -60,7 +60,7 @@ const CalendarDays = ({ dayOffset, createBooking }) => {
             }} />
         </Modal>
       }
-    </React.Fragment>
+    </>
   )
 }
 
